@@ -58,11 +58,7 @@ Insert architecture diagram here:
 mongodb+srv://<user>:<password>@cluster.mongodb.net/travelmemory
 ```
 
-Insert screenshot:
 
-```
-screenshots/mongodb.png
-```
 
 ---
 
@@ -91,11 +87,7 @@ Backend:
 * SSH (22) → My IP
 * Port 3000 allowed
 
-Insert screenshot:
 
-```
-screenshots/security-groups.png
-```
 
 ---
 
@@ -161,11 +153,6 @@ pm2 save
 pm2 status
 ```
 
-Insert screenshot:
-
-```
-screenshots/backend-running.png
-```
 
 ---
 
@@ -208,11 +195,6 @@ sudo cp -r build/* /var/www/html/
 sudo systemctl restart nginx
 ```
 
-Insert screenshot:
-
-```
-screenshots/frontend-ui.png
-```
 
 ---
 
@@ -237,12 +219,10 @@ sudo nginx -t
 sudo systemctl reload nginx
 ```
 
-Insert screenshot:
+![Architecture](screenshots/access-with-ip-1.png)
 
-```
-screenshots/reverse-proxy.png
-```
 
+![Architecture](screenshots/access-with-ip-2.png)
 ---
 
 ## 6. Create AMIs and Launch Additional Instances
@@ -257,11 +237,10 @@ Launch:
 * frontend-2
 * backend-2
 
-Insert screenshot:
+![Architecture](screenshots/ami.png)
 
-```
-screenshots/ami.png
-```
+
+![Architecture](screenshots/instances.png)
 
 ---
 
@@ -279,12 +258,6 @@ Backend target group:
 * Port 3000
 * Health check `/`
 
-Insert screenshot:
-
-```
-screenshots/target-groups.png
-```
-
 ---
 
 ## 8. Create Application Load Balancers
@@ -301,11 +274,7 @@ Backend ALB:
 * Listener HTTP 80
 * Target backend TG
 
-Insert screenshot:
-
-```
-screenshots/load-balancer.png
-```
+![Architecture](screenshots/alb.png)
 
 ---
 
@@ -316,11 +285,9 @@ screenshots/load-balancer.png
 | CNAME | @    | FRONTEND_ALB_DNS |
 | CNAME | api  | BACKEND_ALB_DNS  |
 
-Insert screenshot:
+![Architecture](screenshots/access-with-domain-name-1.png)
 
-```
-screenshots/cloudflare.png
-```
+![Architecture](screenshots/access-with-domain-name-2.png)
 
 ---
 
@@ -333,11 +300,15 @@ sudo certbot --nginx -d api.yourdomain.com
 sudo certbot renew --dry-run
 ```
 
-Insert screenshot:
+![Architecture](screenshots/ssl.png)
 
-```
-screenshots/https.png
-```
+![Architecture](screenshots/ssl1.png)
+
+![Architecture](screenshots/ssl2.png)
+
+![Architecture](screenshots/cert.png)
+
+![Architecture](screenshots/cert-renew-test.png)
 
 ---
 
