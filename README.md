@@ -34,7 +34,6 @@ Backend EC2 (Node.js + PM2)
 MongoDB Atlas
 ```
 
-Insert architecture diagram here:
 
 ![Architecture](screenshots/architecture.png)
 
@@ -99,10 +98,8 @@ SSH into backend instance.
 
 ```bash
 sudo apt update -y
-sudo apt install git -y
 curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
 sudo apt install nodejs -y
-sudo npm install -g pm2
 ```
 
 ### Clone repository
@@ -122,35 +119,12 @@ nano .env
 ```
 PORT=3000
 MONGO_URI=YOUR_CONNECTION_STRING
-JWT_SECRET=test123
-```
-
-### Update server binding
-
-Edit:
-
-```bash
-nano index.js
-```
-
-Change:
-
-```js
-app.listen(PORT)
-```
-
-to:
-
-```js
-app.listen(PORT, "0.0.0.0")
 ```
 
 ### Start backend
 
 ```bash
-pm2 start index.js
-pm2 save
-pm2 status
+node index.js
 ```
 
 
@@ -208,7 +182,7 @@ Add:
 
 ```
 location /api/ {
-    proxy_pass http://BACKEND_PRIVATE_IP:3000/;
+    proxy_pass http://BACKEND_PUBLI_IP:3000/;
 }
 ```
 
